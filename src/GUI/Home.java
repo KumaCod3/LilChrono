@@ -8,13 +8,26 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.util.Map.Entry;
+import java.util.Timer;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import Logic.TimeCounter;
 
 
 
 public class Home extends Finestra{
 	String segnapostoString=" ";
+	Timer timer;
+	Etichetta oreEtichetta;
+	Etichetta minutiEtichetta;
+	Etichetta secondiEtichetta;
+	int ore;
+	int minuti;
+	int secondi;
+	
+	
 	public Home() {
 		super("Cronometro");
 		
@@ -52,7 +65,7 @@ public class Home extends Finestra{
 		shrsJPanel.setLayout(new FlowLayout());
 		Etichetta hrsEtichetta=new Etichetta("Ore:");
 		shrsJPanel.add(hrsEtichetta);
-		Etichetta oreEtichetta=new Etichetta("00");
+		oreEtichetta=new Etichetta("00");
 		oreEtichetta.setFont(Est.boldFontBig);
 		oreEtichetta.setForeground(Est.scuro);
 		shrsJPanel.add(oreEtichetta);
@@ -64,7 +77,7 @@ public class Home extends Finestra{
 		minJPanel.setLayout(new FlowLayout());
 		Etichetta minEtichetta=new Etichetta("Minuti:");
 		minJPanel.add(minEtichetta);
-		Etichetta minutiEtichetta=new Etichetta("00");
+		minutiEtichetta=new Etichetta("00");
 		minutiEtichetta.setFont(Est.boldFontBig);
 		minutiEtichetta.setForeground(Est.scuro);
 		minJPanel.add(minutiEtichetta);
@@ -76,7 +89,7 @@ public class Home extends Finestra{
 		secJPanel.setLayout(new FlowLayout());
 		Etichetta secEtichetta=new Etichetta("Secondi:");
 		secJPanel.add(secEtichetta);
-		Etichetta secondiEtichetta=new Etichetta("00");
+		secondiEtichetta=new Etichetta("00");
 		secondiEtichetta.setFont(Est.boldFontBig);
 		secondiEtichetta.setForeground(Est.scuro);
 		secJPanel.add(secondiEtichetta);
@@ -86,21 +99,21 @@ public class Home extends Finestra{
 		Bottone playBottone=new Bottone("INIZIA");
 		playBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				start();
 			}
 		});
 		lowJPanel.add(playBottone);
 		Bottone pausaBottone=new Bottone("PAUSA");
 		pausaBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				pause();
 			}
 		});
 		lowJPanel.add(pausaBottone);
 		Bottone stopBottone=new Bottone("FERMA");
 		stopBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				stop();
 			}
 		});
 		lowJPanel.add(stopBottone);
@@ -108,5 +121,41 @@ public class Home extends Finestra{
 		c.add("South", lowJPanel);
 		c.add("Center", topJPanel);
 		pack();
+	}
+	
+	void aggiornaGrafica() {
+		oreEtichetta.setText(""+ore);
+		minutiEtichetta.setText(""+minuti);
+		secondiEtichetta.setText(""+secondi);
+	}
+
+	void start() {
+		timer = new Timer();
+        TimeCounter task = new TimeCounter(this);
+        timer.schedule(task, 1000l, 1000l);
+	}
+	
+	void pause() {
+		timer.cancel();
+	}
+	
+	void stop() {
+		pause();
+		ore=0;
+		minuti=0;
+		secondi=0;
+	}
+	
+	public void passaSec() {
+		secondi++;
+		if (secondi==60) {
+			secondi=0;
+			minuti++;
+			if(minuti==60) {
+				minuti=0;
+				ore++;
+			}
+		}
+		aggiornaGrafica();
 	}
 }
