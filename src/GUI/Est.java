@@ -15,9 +15,9 @@ public class Est {
 	public static Color scuro=new Color(6,147,227);
 	public static Color verde=new Color(0,208,130);
 	
-	public static Font boldFont=new Font("Tahoma", Font.BOLD, 20);
-	public static Font plainFont=new Font("Tahoma", Font.PLAIN, 20);
-	public static Font boldFontBig=new Font("Tahoma", Font.BOLD, 30);
+	public static Font boldFont=new Font("Century Gothic", Font.BOLD, 21);
+	public static Font plainFont=new Font("Century Gothic", Font.PLAIN, 21);
+	public static Font boldFontBig=new Font("Century Gothic", Font.BOLD, 31);
 	
 	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	public static double width=screenSize.getSize().getWidth();
