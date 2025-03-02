@@ -86,30 +86,21 @@ public class Home extends Finestra{
 		Bottone playBottone=new Bottone("INIZIA");
 		playBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddPjk addPrjk=new AddPjk();
-		    	addPrjk.setVisible(true);
-				setVisible(false);
-				dispose();
+				//TODO
 			}
 		});
 		lowJPanel.add(playBottone);
 		Bottone pausaBottone=new Bottone("PAUSA");
 		pausaBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddPjk addPrjk=new AddPjk();
-		    	addPrjk.setVisible(true);
-				setVisible(false);
-				dispose();
+				//TODO
 			}
 		});
 		lowJPanel.add(pausaBottone);
 		Bottone stopBottone=new Bottone("FERMA");
 		stopBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddPjk addPrjk=new AddPjk();
-		    	addPrjk.setVisible(true);
-				setVisible(false);
-				dispose();
+				//TODO
 			}
 		});
 		lowJPanel.add(stopBottone);
