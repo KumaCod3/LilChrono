@@ -14,7 +14,7 @@ public class Bottone extends JPanel{
 		setBorder(Est.bordo);
 		setBackground(Est.sfondo);
 
-		Dimension dd=new Dimension(160, 60);
+		Dimension dd=new Dimension(100, 60);
 		but.setMinimumSize(dd);
 		but.setMaximumSize(dd);
 		but.setPreferredSize(dd);

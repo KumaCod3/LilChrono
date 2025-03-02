@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
@@ -34,9 +35,12 @@ public class Home extends Finestra{
 		setMinimumSize(Est.chronMax);
 		setMaximumSize(Est.chronMax);
 		setPreferredSize(Est.chronMax);
+		setUndecorated(true);
+		setShape(new RoundRectangle2D.Double(10, 10, this.getWidth()-150, this.getHeight()-230, 100, 100));
+		
 		
 		JPanel contenuto = new JPanel();
-		contenuto.setBorder(Est.bordo);
+		contenuto.setBorder(Est.bordoMax);
 		contenuto.setOpaque(false);
 		contenuto.setLayout(new GridLayout(2,1));
 		
@@ -48,7 +52,7 @@ public class Home extends Finestra{
 		JPanel lowJPanel=new JPanel();
 		lowJPanel.setBorder(Est.bordoLo);
 		lowJPanel.setOpaque(false);
-		lowJPanel.setLayout(new GridLayout(1,3));
+		lowJPanel.setLayout(new GridLayout(1,4));
 		contenuto.add(lowJPanel);		
 		
 		JPanel etiJPanel=new JPanel();
@@ -117,6 +121,15 @@ public class Home extends Finestra{
 			}
 		});
 		lowJPanel.add(stopBottone);
+		Bottone esciBottone=new Bottone("CHIUDI");
+		esciBottone.but.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose(); 
+                System.exit(0);
+			}
+		});
+		lowJPanel.add(esciBottone);
+
 		
 		c.add("South", lowJPanel);
 		c.add("Center", topJPanel);

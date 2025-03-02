@@ -20,8 +20,8 @@ public class Est {
 	public static Font boldFontBig=new Font("Tahoma", Font.BOLD, 30);
 	
 	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	private static double width=screenSize.getSize().getWidth();
-	private static double height=screenSize.getSize().getSize().getHeight();
+	public static double width=screenSize.getSize().getWidth();
+	public  static double height=screenSize.getSize().getSize().getHeight();
 	private static double wi=width*0.8;
 	private static double he=height*0.8;
 	private static double he80=he/11.5;
@@ -38,6 +38,7 @@ public class Est {
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
 	
 	public static Border bordo= BorderFactory.createEmptyBorder(1,1,1,1);
+	public static Border bordoMax= BorderFactory.createEmptyBorder(10,10,10,10);
 	public static Border bordoLo= BorderFactory.createEmptyBorder(1,1,15,1);
 	public static Border bordoEt= BorderFactory.createEmptyBorder(25,10,0,10);
 	public static MatteBorder borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
