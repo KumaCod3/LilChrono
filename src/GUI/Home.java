@@ -2,6 +2,8 @@ package GUI;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
@@ -11,6 +13,8 @@ import java.io.InputStreamReader;
 import java.util.Map.Entry;
 import java.util.Timer;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -38,6 +42,16 @@ public class Home extends Finestra{
 		setUndecorated(true);
 		setShape(new RoundRectangle2D.Double(10, 10, this.getWidth()-150, this.getHeight()-230, 100, 100));
 		
+		Toolkit tk=Toolkit.getDefaultToolkit();
+		Image imgg=tk.getImage("pausa.png");
+		Image imgPau = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
+		Icon pauseIcon=new ImageIcon(imgPau);
+		imgg=tk.getImage("stop.png");
+		imgPau = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
+		Icon stopIcon=new ImageIcon(imgPau);
+		imgg=tk.getImage("play.png");
+		imgPau = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
+		Icon playIcon=new ImageIcon(imgPau);
 		
 		JPanel contenuto = new JPanel();
 		contenuto.setBorder(Est.bordoMax);
@@ -100,28 +114,31 @@ public class Home extends Finestra{
 		topJPanel.add(secJPanel);
 
 		
-		Bottone playBottone=new Bottone("INIZIA");
+		Bottone playBottone=new Bottone("");
+		playBottone.but.setIcon(playIcon);
 		playBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				start();
 			}
 		});
 		lowJPanel.add(playBottone);
-		Bottone pausaBottone=new Bottone("PAUSA");
+		Bottone pausaBottone=new Bottone("");
+		pausaBottone.but.setIcon(pauseIcon);
 		pausaBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				pause();
 			}
 		});
 		lowJPanel.add(pausaBottone);
-		Bottone stopBottone=new Bottone("FERMA");
+		Bottone stopBottone=new Bottone("");
+		stopBottone.but.setIcon(stopIcon);
 		stopBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				stop();
 			}
 		});
 		lowJPanel.add(stopBottone);
-		Bottone esciBottone=new Bottone("CHIUDI");
+		Bottone esciBottone=new Bottone("X");
 		esciBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose(); 
