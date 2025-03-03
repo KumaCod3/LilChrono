@@ -42,6 +42,7 @@ public class Home extends Finestra{
 		setUndecorated(true);
 		setShape(new RoundRectangle2D.Double(10, 10, this.getWidth()-150, this.getHeight()-230, 100, 100));
 		
+		
 		Toolkit tk=Toolkit.getDefaultToolkit();
 		Image imgg=tk.getImage("pausa.png");
 		Image imgPau = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
