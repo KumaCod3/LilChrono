@@ -53,6 +53,9 @@ public class Home extends Finestra{
 		imgg=tk.getImage("play.png");
 		imgPau = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
 		Icon playIcon=new ImageIcon(imgPau);
+		imgg=tk.getImage("chiudi.png");
+		imgPau = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
+		Icon chiuIcon=new ImageIcon(imgPau);
 		
 		JPanel contenuto = new JPanel();
 		contenuto.setBorder(Est.bordoMax);
@@ -139,7 +142,8 @@ public class Home extends Finestra{
 			}
 		});
 		lowJPanel.add(stopBottone);
-		Bottone esciBottone=new Bottone("X");
+		Bottone esciBottone=new Bottone("");
+		esciBottone.but.setIcon(chiuIcon);
 		esciBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose(); 
