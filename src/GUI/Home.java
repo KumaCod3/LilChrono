@@ -8,9 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDateTime;
 import java.util.Map.Entry;
+import java.util.ArrayList;
 import java.util.Timer;
 
 import javax.swing.Icon;
@@ -31,7 +37,7 @@ public class Home extends Finestra{
 	int ore;
 	int minuti;
 	int secondi;
-	
+	public static boolean isOn=false;
 	
 	public Home() {
 		super("Cronometro");
@@ -146,16 +152,20 @@ public class Home extends Finestra{
 		esciBottone.but.setIcon(chiuIcon);
 		esciBottone.but.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				pause();
 				dispose(); 
                 System.exit(0);
 			}
 		});
 		lowJPanel.add(esciBottone);
 
+		carica();
+		aggiornaGrafica();
 		
 		c.add("South", lowJPanel);
 		c.add("Center", topJPanel);
 		pack();
+		start();
 	}
 	
 	void aggiornaGrafica() {
@@ -165,13 +175,18 @@ public class Home extends Finestra{
 	}
 
 	void start() {
-		timer = new Timer();
-        TimeCounter task = new TimeCounter(this);
-        timer.schedule(task, 1000l, 1000l);
+		if (!isOn) {
+			timer = new Timer();
+	        TimeCounter task = new TimeCounter(this);
+	        timer.schedule(task, 1000l, 1000l);
+	        isOn=true;
+		}
 	}
 	
 	void pause() {
 		timer.cancel();
+		scarica();
+		isOn=false;
 	}
 	
 	void stop() {
@@ -179,6 +194,8 @@ public class Home extends Finestra{
 		ore=0;
 		minuti=0;
 		secondi=0;
+		aggiornaGrafica();
+		pause();
 	}
 	
 	public void passaSec() {
@@ -192,5 +209,39 @@ public class Home extends Finestra{
 			}
 		}
 		aggiornaGrafica();
+	}
+	
+	public void carica(){
+		BufferedReader reader;
+		try{
+			File file = new File("Tempo.txt");
+			
+			FileReader fReader = new FileReader(file);
+			reader = new BufferedReader(fReader);
+			String line = reader.readLine();
+			if (line !=null) {
+				String[] totStrings=line.split(",");
+				ore=Integer.parseInt(totStrings[0]);
+				minuti=Integer.parseInt(totStrings[1]);
+				secondi=Integer.parseInt(totStrings[2]);
+			}
+		}
+		catch (IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void scarica(){
+		try{
+			FileWriter fWriter = new FileWriter("Tempo.txt", false);
+			BufferedWriter writer = new BufferedWriter(fWriter);
+			String finString=ore+","+minuti+","+secondi;;
+			
+			writer.write(finString);
+			writer.close();
+		}
+		catch (Exception e){
+			// error
+		}
 	}
 }
