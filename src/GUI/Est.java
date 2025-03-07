@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
-import java.time.format.DateTimeFormatter;
 
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -32,7 +31,9 @@ public class Est {
 	public static Dimension err=new Dimension((int)wi310,(int)(he/1.8));
 	public static Dimension bigErr=new Dimension((int)wi310,(int)(he80));
 	
-	public static Dimension chronMax=new Dimension((int)(width/3),(int)(height/4));
+	public static Dimension chronMin=new Dimension((int)(width/4),(int)(height/5));
+	public static Dimension chronMed=new Dimension((int)(width/3),(int)(height/4));
+	public static Dimension chronMax=new Dimension((int)(width/2),(int)(height/3));
 	
 	public static int marginX=(int)((screenSize.getSize().getWidth()/2)-(standard.getSize().getWidth()/2));
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));

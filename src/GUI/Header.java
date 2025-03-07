@@ -13,7 +13,7 @@ public class Header extends JPanel {
 		super();
 		setLayout(new FlowLayout());
 		setMinimumSize(Est.testa);
-		setBorder(Est.borColHe);
+	//	setBorder(Est.borColHe);
 		
 		HeadPanel pan=new HeadPanel();
 		pan.setOpaque(false);

@@ -1,5 +1,5 @@
 package GUI;
-import java.awt.Color;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -13,20 +13,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.time.LocalDateTime;
-import java.util.Map.Entry;
-import java.util.ArrayList;
 import java.util.Timer;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import Logic.TimeCounter;
-
-
 
 public class Home extends Finestra{
 	String segnapostoString=" ";
@@ -42,12 +33,11 @@ public class Home extends Finestra{
 	public Home() {
 		super("Cronometro");
 		
-		setMinimumSize(Est.chronMax);
+		setMinimumSize(Est.chronMin);
 		setMaximumSize(Est.chronMax);
-		setPreferredSize(Est.chronMax);
+		setPreferredSize(Est.chronMed);
 		setUndecorated(true);
 		setShape(new RoundRectangle2D.Double(10, 10, this.getWidth()-150, this.getHeight()-230, 100, 100));
-		
 		
 		Toolkit tk=Toolkit.getDefaultToolkit();
 		Image imgg=tk.getImage("pausa.png");
@@ -62,25 +52,16 @@ public class Home extends Finestra{
 		imgg=tk.getImage("chiudi.png");
 		imgPau = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
 		Icon chiuIcon=new ImageIcon(imgPau);
-		
-		JPanel contenuto = new JPanel();
-		contenuto.setBorder(Est.bordoMax);
-		contenuto.setOpaque(false);
-		contenuto.setLayout(new GridLayout(2,1));
-		
+	
 		JPanel topJPanel=new JPanel();
 		topJPanel.setOpaque(false);
 		topJPanel.setLayout(new FlowLayout());
-		contenuto.add(topJPanel);
 		
 		JPanel lowJPanel=new JPanel();
-		lowJPanel.setBorder(Est.bordoLo);
 		lowJPanel.setOpaque(false);
-		lowJPanel.setLayout(new GridLayout(1,4));
-		contenuto.add(lowJPanel);		
+		lowJPanel.setLayout(new GridLayout(1,4));	
 		
 		JPanel etiJPanel=new JPanel();
-		etiJPanel.setBorder(Est.bordo);
 		etiJPanel.setOpaque(false);
 		etiJPanel.setLayout(new FlowLayout());
 		Etichetta commEtichetta=new Etichetta("Tempo:");
@@ -162,8 +143,8 @@ public class Home extends Finestra{
 		carica();
 		aggiornaGrafica();
 		
-		c.add("South", lowJPanel);
-		c.add("Center", topJPanel);
+		c.add("Center", lowJPanel);
+		c.add("North", topJPanel);
 		pack();
 		start();
 	}
