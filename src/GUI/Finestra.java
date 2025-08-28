@@ -10,7 +10,6 @@ public class Finestra extends JFrame {
 	public Finestra(String x) {
 		super(x);
 
-		
 		setLayout(new BorderLayout());
 		setLocation(Est.marginX, Est.marginY);
 		setMinimumSize(Est.err);
@@ -21,7 +20,6 @@ public class Finestra extends JFrame {
 		c = new JPanel();
 		c.setLayout(new BorderLayout());
 		c.setBackground(Est.sfondo);
-	//	setBackground(Est.sfondo);
 		add("Center", c);
 
 	}
